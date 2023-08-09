@@ -3,6 +3,7 @@ package cl.cat2814.a08mvvmexample2.userInterface.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
+import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import cl.cat2814.a08mvvmexample2.R
 import cl.cat2814.a08mvvmexample2.data.local.DogBreedsEntity
@@ -44,6 +45,10 @@ class DogBreedsAdapter : RecyclerView.Adapter<DogBreedsAdapter.ItemDogBreedViewH
         RecyclerView.ViewHolder(binding.root) {
         fun bind(dogBreeds: DogBreedsEntity) {
             binding.tvDogBreedName.text = dogBreeds.breed
+            binding.cvDogBreed.setOnClickListener {
+                findNavController(binding.root)
+                    .navigate(R.id.action_dogBreedsListFragment_to_dogBreedDetailFragment)
+            }
         }
     }
 }

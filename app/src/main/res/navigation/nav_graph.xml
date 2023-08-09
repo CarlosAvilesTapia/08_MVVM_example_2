@@ -9,5 +9,14 @@
         android:id="@+id/dogBreedsListFragment"
         android:name="cl.cat2814.a08mvvmexample2.userInterface.fragments.DogBreedsListFragment"
         android:label="fragment_dog_breeds_list"
-        tools:layout="@layout/fragment_dog_breeds_list" />
+        tools:layout="@layout/fragment_dog_breeds_list" >
+        <action
+            android:id="@+id/action_dogBreedsListFragment_to_dogBreedDetailFragment"
+            app:destination="@id/dogBreedDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dogBreedDetailFragment"
+        android:name="cl.cat2814.a08mvvmexample2.userInterface.fragments.DogBreedDetailFragment"
+        android:label="fragment_dog_breed_detail"
+        tools:layout="@layout/fragment_dog_breed_detail" />
 </navigation>
