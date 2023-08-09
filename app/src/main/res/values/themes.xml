@@ -3,6 +3,8 @@
     <style name="Base.Theme.08MVVMExample2" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:statusBarColor">#009688</item>
+        <item name="android:navigationBarColor">#009688</item>
     </style>
 
     <style name="Theme.08MVVMExample2" parent="Base.Theme.08MVVMExample2" />
