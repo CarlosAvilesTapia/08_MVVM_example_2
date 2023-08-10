@@ -27,9 +27,9 @@ class DogBreedsAdapter : RecyclerView.Adapter<DogBreedsAdapter.ItemDogBreedViewH
         val dogBreeds = dogBreedsList[position]
         holder.bind(dogBreeds)
 
-        holder.binding.cvDogBreed.startAnimation(
+       /* holder.binding.cvDogBreed.startAnimation(
             AnimationUtils.loadAnimation(holder.itemView.context, R.anim.fade_slide_left)
-        )
+        )*/
     }
 
     override fun getItemCount(): Int {
@@ -46,6 +46,8 @@ class DogBreedsAdapter : RecyclerView.Adapter<DogBreedsAdapter.ItemDogBreedViewH
         RecyclerView.ViewHolder(binding.root) {
         fun bind(dogBreedsEntity: DogBreedsEntity) {
             binding.tvDogBreedName.text = dogBreedsEntity.breed
+            binding.cvDogBreed.startAnimation(
+                AnimationUtils.loadAnimation(itemView.context, R.anim.fade_slide_left))
             binding.cvDogBreed.setOnClickListener {
                 val bundle = Bundle()
                 bundle.putString("id", dogBreedsEntity.breed)

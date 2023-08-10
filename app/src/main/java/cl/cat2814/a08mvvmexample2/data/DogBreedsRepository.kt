@@ -50,8 +50,8 @@ class DogBreedsRepository(
         } catch (exception: Exception) {
             Log.e("Repository", "response.errorBody().toString()")
         }
-
-        fun getDogBreedsImagesFromDao(id: String): LiveData<List<DogBreedsImagesEntity>> =
-            dogBreedsDao.getDogBreedsImages(id)
     }
+
+    fun getDogBreedsImagesFromDao(id: String): LiveData<List<DogBreedsImagesEntity>> =
+        dogBreedsDao.getDogBreedsImages(id)
 }
