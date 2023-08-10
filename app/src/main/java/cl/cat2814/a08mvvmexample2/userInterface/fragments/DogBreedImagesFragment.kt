@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import cl.cat2814.a08mvvmexample2.databinding.FragmentDogBreedImagesBinding
+import cl.cat2814.a08mvvmexample2.userInterface.adapters.DogBreedImagesAdapter
 import cl.cat2814.a08mvvmexample2.userInterface.viewModel.DogBreedsViewModel
 
 private const val ARG_PARAM1 = "id"
@@ -40,6 +41,10 @@ class DogBreedImagesFragment : Fragment() {
     }
 
     private fun initAdapter() {
-        TODO("Not yet implemented")
+        val adapter = DogBreedImagesAdapter()
+        binding.rvDogBreedsImages.adapter = adapter
+        dogBreedsViewModel.liveDataDogBreedsImages(param1.toString()).observe(viewLifecycleOwner) {
+            adapter.setImageData(it)
+        }
     }
 }
