@@ -14,16 +14,21 @@ class DogBreedsRepository(
 
     // Funciones para el listado de razas
     suspend fun loadDogBreedsFromApiToDao() {
-        val response = dogBreedsApi.getDataFromApi()
-        if (response.isSuccessful) {
-            val responseDogBreed = response.body()!!.message
-            val keys = responseDogBreed.keys
-            keys.forEach {
-                val dogBreedsEntity = DogBreedsEntity(it)
-                dogBreedsDao.insertDogBreeds(dogBreedsEntity)
+        try {
+            val response = dogBreedsApi.getDataFromApi()
+            if (response.isSuccessful) {
+                val responseDogBreed = response.body()!!.message
+                val keys = responseDogBreed.keys
+                keys.forEach {
+                    val dogBreedsEntity = DogBreedsEntity(it)
+                    dogBreedsDao.insertDogBreeds(dogBreedsEntity)
+                }
+            } else {
+                Log.e("Repository", response.errorBody().toString())
             }
-        } else {
-            Log.e("Repository", response.errorBody().toString())
+
+        } catch (exception: Exception) {
+            Log.e("Repository", "response.errorBody().toString()")
         }
     }
 
@@ -32,17 +37,21 @@ class DogBreedsRepository(
 
     // Funciones para el listado de imágenes de cada raza.
     suspend fun loadDogBreedsImagesFromApiToDao(id: String) {
-        val response = dogBreedsApi.getDogBreedImagesFromApi(id)
-        if (response.isSuccessful) {
-            response.body()!!.message.forEach {
-                val dogBreedImage = DogBreedsImagesEntity(id, it)
-                dogBreedsDao.insertDogBreedsImages(dogBreedImage)
+        try {
+            val response = dogBreedsApi.getDogBreedImagesFromApi(id)
+            if (response.isSuccessful) {
+                response.body()!!.message.forEach {
+                    val dogBreedImage = DogBreedsImagesEntity(id, it)
+                    dogBreedsDao.insertDogBreedsImages(dogBreedImage)
+                }
+            } else {
+                Log.e("Repository", response.errorBody().toString())
             }
-        } else {
-            Log.e("Repository", response.errorBody().toString())
+        } catch (exception: Exception) {
+            Log.e("Repository", "response.errorBody().toString()")
         }
-    }
 
-    fun getDogBreedsImagesFromDao(id: String): LiveData<List<DogBreedsImagesEntity>> =
-        dogBreedsDao.getDogBreedsImages(id)
+        fun getDogBreedsImagesFromDao(id: String): LiveData<List<DogBreedsImagesEntity>> =
+            dogBreedsDao.getDogBreedsImages(id)
+    }
 }
