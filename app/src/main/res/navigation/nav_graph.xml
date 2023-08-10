@@ -11,12 +11,12 @@
         android:label="fragment_dog_breeds_list"
         tools:layout="@layout/fragment_dog_breeds_list" >
         <action
-            android:id="@+id/action_dogBreedsListFragment_to_dogBreedDetailFragment"
-            app:destination="@id/dogBreedDetailFragment" />
+            android:id="@+id/action_dogBreedsListFragment_to_dogBreedImagesFragment"
+            app:destination="@id/dogBreedImagesFragment" />
     </fragment>
     <fragment
-        android:id="@+id/dogBreedDetailFragment"
-        android:name="cl.cat2814.a08mvvmexample2.userInterface.fragments.DogBreedDetailFragment"
-        android:label="fragment_dog_breed_detail"
-        tools:layout="@layout/fragment_dog_breed_detail" />
+        android:id="@+id/dogBreedImagesFragment"
+        android:name="cl.cat2814.a08mvvmexample2.userInterface.fragments.DogBreedImagesFragment"
+        android:label="fragment_dog_breed_images"
+        tools:layout="@layout/fragment_dog_breed_images" />
 </navigation>

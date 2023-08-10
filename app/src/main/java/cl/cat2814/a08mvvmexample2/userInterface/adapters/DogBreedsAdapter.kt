@@ -1,5 +1,6 @@
 package cl.cat2814.a08mvvmexample2.userInterface.adapters
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
@@ -43,11 +44,13 @@ class DogBreedsAdapter : RecyclerView.Adapter<DogBreedsAdapter.ItemDogBreedViewH
 
     class ItemDogBreedViewHolder(val binding: ItemDogBreedBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(dogBreeds: DogBreedsEntity) {
-            binding.tvDogBreedName.text = dogBreeds.breed
+        fun bind(dogBreedsEntity: DogBreedsEntity) {
+            binding.tvDogBreedName.text = dogBreedsEntity.breed
             binding.cvDogBreed.setOnClickListener {
+                val bundle = Bundle()
+                bundle.putString("id", dogBreedsEntity.breed)
                 findNavController(binding.root)
-                    .navigate(R.id.action_dogBreedsListFragment_to_dogBreedDetailFragment)
+                    .navigate(R.id.action_dogBreedsListFragment_to_dogBreedImagesFragment, bundle)
             }
         }
     }

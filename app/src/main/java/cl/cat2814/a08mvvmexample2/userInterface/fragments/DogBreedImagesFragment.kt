@@ -6,34 +6,40 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import cl.cat2814.a08mvvmexample2.databinding.FragmentDogBreedsListBinding
-import cl.cat2814.a08mvvmexample2.userInterface.adapters.DogBreedsAdapter
+import cl.cat2814.a08mvvmexample2.databinding.FragmentDogBreedImagesBinding
 import cl.cat2814.a08mvvmexample2.userInterface.viewModel.DogBreedsViewModel
 
-class DogBreedsListFragment : Fragment() {
+private const val ARG_PARAM1 = "id"
 
-    lateinit var binding: FragmentDogBreedsListBinding
+class DogBreedImagesFragment : Fragment() {
+
+    private var param1: String? = null
+    lateinit var binding: FragmentDogBreedImagesBinding
     private val dogBreedsViewModel: DogBreedsViewModel by activityViewModels()
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+            param1 = it.getString(ARG_PARAM1)
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentDogBreedsListBinding.inflate(layoutInflater, container, false)
+        binding = FragmentDogBreedImagesBinding.inflate(layoutInflater, container, false)
 
         initAdapter()
 
-        dogBreedsViewModel.getAllDogBreeds()
+        dogBreedsViewModel.getDogBreedImages(param1.toString())
+
+
 
         return binding.root
     }
 
     private fun initAdapter() {
-        val adapter = DogBreedsAdapter()
-        binding.rvDogBreedsList.adapter = adapter
-        dogBreedsViewModel.liveDataDogBreeds().observe(viewLifecycleOwner) {
-            adapter.setData(it)
-        }
+        TODO("Not yet implemented")
     }
 }

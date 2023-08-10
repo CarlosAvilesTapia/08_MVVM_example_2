@@ -7,3 +7,9 @@ import androidx.room.PrimaryKey
 data class DogBreedsEntity(
     @PrimaryKey val breed: String
 )
+
+@Entity(tableName = "dog_breeds_images_table", primaryKeys = ["breed", "imgUrl"])
+data class DogBreedsImagesEntity(
+    val breed: String,
+    val imgUrl: String
+)

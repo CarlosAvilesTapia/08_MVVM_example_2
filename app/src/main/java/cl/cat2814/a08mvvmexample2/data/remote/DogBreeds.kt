@@ -4,3 +4,8 @@ data class DogBreeds(
     val status: String,
     val message: Map<String, List<String>>
     )
+
+data class DogBreedsImages(
+    val status: String,
+    val message: List<String>
+)
