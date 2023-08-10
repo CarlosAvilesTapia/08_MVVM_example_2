@@ -35,8 +35,6 @@ class DogBreedImagesFragment : Fragment() {
 
         dogBreedsViewModel.getDogBreedImages(param1.toString())
 
-
-
         return binding.root
     }
 

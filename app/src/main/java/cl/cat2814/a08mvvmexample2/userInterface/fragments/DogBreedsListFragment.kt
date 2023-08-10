@@ -15,7 +15,6 @@ class DogBreedsListFragment : Fragment() {
     lateinit var binding: FragmentDogBreedsListBinding
     private val dogBreedsViewModel: DogBreedsViewModel by activityViewModels()
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
