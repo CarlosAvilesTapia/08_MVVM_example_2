@@ -19,8 +19,10 @@ class DogBreedsRepository(
             if (response.isSuccessful) {
                 val responseDogBreed = response.body()!!.message
                 val keys = responseDogBreed.keys
-                keys.forEach {
-                    val dogBreedsEntity = DogBreedsEntity(it)
+                keys.forEach { breed ->
+
+                    // Aplicación de la función de extensión creada en Mapper para poder testear.
+                    val dogBreedsEntity = breed.toBreedEntity()
                     dogBreedsDao.insertDogBreeds(dogBreedsEntity)
                 }
             } else {
@@ -40,9 +42,11 @@ class DogBreedsRepository(
         try {
             val response = dogBreedsApi.getDogBreedImagesFromApi(id)
             if (response.isSuccessful) {
-                response.body()!!.message.forEach {
-                    val dogBreedImage = DogBreedsImagesEntity(id, it)
-                    dogBreedsDao.insertDogBreedsImages(dogBreedImage)
+                response.body()!!.message.forEach { url ->
+
+                    // Aplicación de la función de extensión creada en Mapper para poder testear.
+                    val dogBreedImages = url.toBreedImageEntity(id)
+                    dogBreedsDao.insertDogBreedsImages(dogBreedImages)
                 }
             } else {
                 Log.e("Repository", response.errorBody().toString())
