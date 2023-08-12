@@ -1,7 +1,7 @@
 package cl.cat2814.a08mvvmexample2.data
 
-import org.junit.Assert.*
-
+import com.google.common.truth.Truth.assertThat
+import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class MapperTest {
@@ -31,6 +31,9 @@ class MapperTest {
         val result2 = breedTest.toBreedEntity()
 
         // Then
-        assertEquals(breedTest, result2.breed)
+        //assertEquals(breedTest, result2.breed)
+
+        // Then (probando Truth)
+        assertThat(result2.breed).isEqualTo(breedTest)
     }
 }
