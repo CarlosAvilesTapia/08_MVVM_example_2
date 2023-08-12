@@ -12,6 +12,10 @@ interface DogBreedsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertDogBreeds(dogBreedsEntity: DogBreedsEntity)
 
+    // Función copiada pero cambiando el parámetro por una lista.
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertDogBreeds(dogBreedsEntity: List<DogBreedsEntity>)
+
     @Query("SELECT * FROM dog_breeds_table ORDER BY breed ASC")
     fun getDogBreeds(): LiveData<List<DogBreedsEntity>>
 
